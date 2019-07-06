@@ -1,0 +1,85 @@
+<form (ngSubmit)="addEmployee()" #addForm="ngForm">
+  <table class="table table-border">
+    <tr><th colspan="2">Add Employee</th></tr>
+    <tr>
+      <td><input [(ngModel)]="emp.Id" name ="Id"  #Id=ngModel 
+            placeholder="Enter  ID"></td>
+          <!-- <div *ngIf="Id.invalid" class="alert alert-danger">
+           ID is required
+          </div> -->
+      </tr>
+    <tr>
+      <td><input [(ngModel)]="emp.empName" name ="empName"  #empName=ngModel 
+              placeholder="Enter Employee Name" ></td>
+               <!-- <div *ngIf="studName.invalid" class="alert alert-danger">
+                student name is required
+              </div>  -->
+           
+    <tr>
+        <td><input [(ngModel)]="emp.salary" name ="salary" #salary=ngModel 
+               placeholder="Enter Salary"></td>
+              <!-- <div *ngIf="mobilePrice.invalid" class="alert alert-danger">
+                Mobile Number is required
+              </div> -->
+            </tr>
+          
+          
+                <!-- <tr><td>Date of Birth</td>
+            <td><input [(ngModel)]="stu.Dob" name ="Dob"  #Dob=ngModel required
+                    placeholder="Enter Date of Birth"></td>
+            </tr> -->
+
+            <tr>
+              <td><input [(ngModel)]="emp.dept" name ="dept"  #address=ngModel 
+                      placeholder="Enter dept" ></td>
+                       <!-- <div *ngIf="address.invalid" class="alert alert-danger">
+                        Address is required
+                      </div>  -->
+                    </tr>
+
+                       <tr>
+            <td><input [(ngModel)]="emp.doj" name ="doj"  #doj=ngModel required
+                    placeholder="Enter Date of Joining"></td>
+            </tr>
+    <tr><th colspan="2">
+        <button type="submit" [disabled]="!addForm.valid">Add Employee</button>
+    </th></tr>
+  </table>  
+</form>
+
+{{addForm.valid | json}}
+ {{addForm.value}}
+<div class="container">
+  <table class="table table-bordered">
+      <thead>
+          <tr>
+              
+              <th>ID</th>
+              <th>NAME</th>
+              <th>SALARY</th>
+              <!-- <th>Date of Birth</th> -->
+              <th>DEPARTMENT</th>
+              <th>DOJ</th>
+              <th>Action</th>
+             
+          </tr>
+      </thead>
+      <tbody>
+          <!-- --------------USING *ngFor---------------------- -->
+          <tr *ngFor="let emp of empList">
+              
+             
+              <td>{{emp.Id}}</td>
+              <td>{{emp.empName}}</td>
+              <td>{{emp.salary}}</td>
+             
+               <td>{{emp.dept}}</td>
+               <td>{{emp.doj}}</td>
+               <td><button class="btn btn-outline-danger" (click)="delete(i)">Delete</button></td>
+          </tr>
+      </tbody>
+  </table>
+  <div *ngFor="let emp of empList">
+  {{ stu | json}}
+  </div>
+</div> 
